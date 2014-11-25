@@ -54,4 +54,14 @@ public class AlgoWars {
 				return n;
 		return null;
 	}
+	
+	public boolean removeEdge(int from, int to) {
+		if (getNodeById(from).adjacencies.contains(to)) {
+			getNodeById(from).adjacencies.remove(to);
+			return true;
+		}
+		System.out.println("There is no edge from " + from + " to " + to);
+		return false;
+	}
 }
+	
