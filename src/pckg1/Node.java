@@ -7,6 +7,8 @@ public class Node {
 	public int id;
 	// the ID of the adjacent nodes
 	public HashSet<Integer> adjacencies;
+	
+	public boolean visited = false;
 
 	public Node(int id) {
 		adjacencies = new HashSet<Integer>();
