@@ -63,5 +63,23 @@ public class AlgoWars {
 		System.out.println("There is no edge from " + from + " to " + to);
 		return false;
 	}
+	
+	private boolean isCyclicUtil(int v) {
+		getNodeById(v).visited = true;
+		for (int i : getNodeById(v).adjacencies) {
+			if (!getNodeById(i).visited && isCyclicUtil(i))
+				return true;
+			else
+				return true;
+		}
+		return false;
+	}
+	
+	public boolean isCyclic() {
+		for (int i = 0; i < n_numberOfVertices; i++)
+			if (isCyclicUtil(i))
+				return true;
+		return false;
+	}
 }
 	

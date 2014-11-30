@@ -9,6 +9,7 @@ public class Node {
 	public HashSet<Integer> adjacencies;
 	
 	public boolean visited = false;
+	public int parent;
 
 	public Node(int id) {
 		adjacencies = new HashSet<Integer>();
@@ -18,5 +19,4 @@ public class Node {
 	public void addAdjacency(int adjacency) {
 		adjacencies.add(adjacency);
 	}
-
 }
