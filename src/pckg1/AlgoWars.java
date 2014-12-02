@@ -39,10 +39,21 @@ public class AlgoWars {
 			if (!hasAdded.contains(fromNode)) {
 				Node n = new Node(fromNode);
 				n.addAdjacency(toNode);
+				if (!hasAdded.contains(toNode)) {
+					Node m = new Node(toNode);
+					graph.add(m);
+					hasAdded.add(toNode);
+				}
 				graph.add(n);
 				hasAdded.add(fromNode);
 			} else {
+				// System.out.println("adding " + toNode + " as an adjacency to " + fromNode);
 				getNodeById(fromNode).addAdjacency(toNode);
+				if (!hasAdded.contains(toNode)) {
+					Node n = new Node(toNode);
+					graph.add(n);
+					hasAdded.add(toNode);
+				}
 			}
 
 		}
@@ -65,19 +76,24 @@ public class AlgoWars {
 	}
 	
 	private boolean isCyclicUtil(int v) {
-		getNodeById(v).visited = true;
-		for (int i : getNodeById(v).adjacencies) {
-			if (!getNodeById(i).visited && isCyclicUtil(i))
-				return true;
-			else
-				return true;
+		if (getNodeById(v).visited == false) {
+			getNodeById(v).visited = true;
+			getNodeById(v).recStack = true;
+			for (int i : getNodeById(v).adjacencies) {
+				if (!getNodeById(i).visited && isCyclicUtil(i))
+					return true;
+				else if (getNodeById(v).recStack)
+					return true;
+			}
 		}
+		getNodeById(v).recStack = false;
 		return false;
 	}
-	
+
 	public boolean isCyclic() {
-		for (int i = 0; i < n_numberOfVertices; i++)
-			if (isCyclicUtil(i))
+		
+		for (Node n : graph)
+			if (isCyclicUtil(n.id))
 				return true;
 		return false;
 	}

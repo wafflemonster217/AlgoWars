@@ -9,6 +9,7 @@ public class Node {
 	public HashSet<Integer> adjacencies;
 	
 	public boolean visited = false;
+	public boolean recStack = false;
 	public int parent;
 
 	public Node(int id) {

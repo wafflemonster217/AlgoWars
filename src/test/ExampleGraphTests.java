@@ -39,5 +39,10 @@ public class ExampleGraphTests {
 		assertTrue(testSubject.removeEdge(3, 5));
 		assertEquals(0, testSubject.getNodeById(3).adjacencies.size());
 	}
+	
+	@Test
+	public void testDetectCyclic() {
+		assertTrue(testSubject.isCyclic());
+	}
 
 }
