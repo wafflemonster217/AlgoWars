@@ -34,7 +34,7 @@ public class EvilCyclesTests {
 	
 	@Test
 	public void testCyclic() {
-		assertTrue(testSubject.isCyclic());
+		assertTrue(testSubject.hasCycles());
 	}
 
 }

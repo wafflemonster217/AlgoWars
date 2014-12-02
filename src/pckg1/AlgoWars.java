@@ -72,12 +72,12 @@ public class AlgoWars {
 		return false;
 	}
 	
-	private boolean isCyclicUtil(int v) {
+	private boolean modifiedDFS(int v) {
 		if (getNodeById(v).visited == false) {
 			getNodeById(v).visited = true;
 			getNodeById(v).recStack = true;
 			for (int i : getNodeById(v).adjacencies) {
-				if (!getNodeById(i).visited && isCyclicUtil(i))
+				if (!getNodeById(i).visited && modifiedDFS(i))
 					return true;
 				else if (getNodeById(i).recStack)
 					return true;
@@ -87,10 +87,10 @@ public class AlgoWars {
 		return false;
 	}
 
-	public boolean isCyclic() {
+	public boolean hasCycles() {
 		
 		for (Node n : graph)
-			if (isCyclicUtil(n.id))
+			if (modifiedDFS(n.id))
 				return true;
 		return false;
 	}

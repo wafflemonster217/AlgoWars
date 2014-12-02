@@ -44,7 +44,7 @@ public class ExampleGraphTests {
 	
 	@Test
 	public void testDetectCyclic() {
-		assertTrue(testSubject.isCyclic());
+		assertTrue(testSubject.hasCycles());
 	}
 	
 	@Test

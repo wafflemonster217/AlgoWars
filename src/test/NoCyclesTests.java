@@ -35,7 +35,7 @@ public class NoCyclesTests {
 	
 	@Test
 	public void testNotCyclic() {
-		assertTrue(!testSubject.isCyclic());
+		assertTrue(!testSubject.hasCycles());
 	}
 
 }
