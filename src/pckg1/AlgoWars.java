@@ -77,10 +77,21 @@ public class AlgoWars {
 			getNodeById(v).visited = true;
 			getNodeById(v).recStack = true;
 			for (int i : getNodeById(v).adjacencies) {
-				if (!getNodeById(i).visited && modifiedDFS(i))
-					return true;
-				else if (getNodeById(i).recStack)
-					return true;
+				if (!getNodeById(i).visited && modifiedDFS(i)) {
+					do {
+						System.out.println("removing edge from " + v + " to " + i);
+						removeEdge(v, i);
+						return true;
+					} while (hasCycles());
+					
+				} else if (getNodeById(i).recStack) {
+					do {
+						System.out.println("removing edge from " + v + " to " + i);
+						removeEdge(v, i);
+						return true;
+					} while (hasCycles());
+					
+				}
 			}
 		}
 		getNodeById(v).recStack = false;
@@ -88,7 +99,6 @@ public class AlgoWars {
 	}
 
 	public boolean hasCycles() {
-		
 		for (Node n : graph)
 			if (modifiedDFS(n.id))
 				return true;
