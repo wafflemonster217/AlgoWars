@@ -76,9 +76,12 @@ public class AlgoWars {
 		if (getNodeById(v).visited == false) {
 			getNodeById(v).visited = true;
 			getNodeById(v).recStack = true;
-			for (int i : getNodeById(v).adjacencies)
+			for (int i : getNodeById(v).adjacencies) {
 				if (!getNodeById(i).visited && isCyclicUtil(i))
 					return true;
+				else if (getNodeById(i).recStack)
+					return true;
+			}
 		}
 		getNodeById(v).recStack = false;
 		return false;
