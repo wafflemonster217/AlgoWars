@@ -27,6 +27,13 @@ public class NoCyclesTests {
 	}
 	
 	@Test
+	public void testRandomNodeDegrees() {
+		assertEquals(1, testSubject.getNodeById(1).adjacencies.size());
+		assertEquals(2, testSubject.getNodeById(2).adjacencies.size());
+		assertEquals(0, testSubject.getNodeById(4).adjacencies.size());
+	}
+	
+	@Test
 	public void testNotCyclic() {
 		assertTrue(!testSubject.isCyclic());
 	}

@@ -1,11 +1,13 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import pckg1.AlgoWars;
+import pckg1.Node;
 
 public class ExampleGraphTests {
 	AlgoWars testSubject;
@@ -43,6 +45,13 @@ public class ExampleGraphTests {
 	@Test
 	public void testDetectCyclic() {
 		assertTrue(testSubject.isCyclic());
+	}
+	
+	@Test
+	public void figureStuffOut() {
+		for (Node n : testSubject.graph)
+			if (n.recStack)
+				System.out.println(n.id);
 	}
 
 }

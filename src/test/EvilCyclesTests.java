@@ -26,7 +26,14 @@ public class EvilCyclesTests {
 	}
 	
 	@Test
-	public void testNotCyclic() {
+	public void testRandomNodeDegrees() {
+		assertEquals(3, testSubject.getNodeById(2).adjacencies.size());
+		assertEquals(2, testSubject.getNodeById(3).adjacencies.size());
+		assertEquals(1, testSubject.getNodeById(1).adjacencies.size());
+	}
+	
+	@Test
+	public void testCyclic() {
 		assertTrue(testSubject.isCyclic());
 	}
 
