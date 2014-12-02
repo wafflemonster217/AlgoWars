@@ -40,8 +40,7 @@ public class AlgoWars {
 				Node n = new Node(fromNode);
 				n.addAdjacency(toNode);
 				if (!hasAdded.contains(toNode)) {
-					Node m = new Node(toNode);
-					graph.add(m);
+					graph.add(new Node(toNode));
 					hasAdded.add(toNode);
 				}
 				graph.add(n);
@@ -49,8 +48,7 @@ public class AlgoWars {
 			} else {
 				getNodeById(fromNode).addAdjacency(toNode);
 				if (!hasAdded.contains(toNode)) {
-					Node n = new Node(toNode);
-					graph.add(n);
+					graph.add(new Node(toNode));
 					hasAdded.add(toNode);
 				}
 			}
