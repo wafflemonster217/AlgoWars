@@ -23,8 +23,6 @@ public class NoCyclesTests {
 
 	@Test
 	public void testGraphCorrectSize() {
-		for (Node n : testSubject.graph)
-			System.out.println(n.id);
 		assertEquals(6, testSubject.graph.size());
 	}
 	

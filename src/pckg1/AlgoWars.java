@@ -47,7 +47,6 @@ public class AlgoWars {
 				graph.add(n);
 				hasAdded.add(fromNode);
 			} else {
-				// System.out.println("adding " + toNode + " as an adjacency to " + fromNode);
 				getNodeById(fromNode).addAdjacency(toNode);
 				if (!hasAdded.contains(toNode)) {
 					Node n = new Node(toNode);
@@ -79,12 +78,9 @@ public class AlgoWars {
 		if (getNodeById(v).visited == false) {
 			getNodeById(v).visited = true;
 			getNodeById(v).recStack = true;
-			for (int i : getNodeById(v).adjacencies) {
+			for (int i : getNodeById(v).adjacencies)
 				if (!getNodeById(i).visited && isCyclicUtil(i))
 					return true;
-				else if (getNodeById(v).recStack)
-					return true;
-			}
 		}
 		getNodeById(v).recStack = false;
 		return false;
