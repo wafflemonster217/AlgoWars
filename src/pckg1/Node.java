@@ -11,11 +11,9 @@ public class Node {
 	
 	public boolean visited = false;
 	public boolean recStack = false;
-	public Set<Integer> parents;
 
 	public Node(int id) {
 		adjacencies = new HashSet<Integer>();
-		parents = new HashSet<Integer>();
 		this.id = id;
 	}
 

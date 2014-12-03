@@ -2,8 +2,10 @@ package pckg1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class AlgoWars {
 	public String filename;
@@ -18,11 +20,14 @@ public class AlgoWars {
 	private HashSet<Integer> hasAdded;
 	
 	public int numEdgesRemoved = 0;
+	
+	public HashMap<Integer, Integer> possibleRemovals;
 
 	public AlgoWars(String filename) {
 		this.filename = filename;
 		graph = new HashSet<Node>();
 		hasAdded = new HashSet<Integer>();
+		possibleRemovals = new HashMap<Integer, Integer>();
 		try {
 			loadGraphFromFile();
 		} catch (FileNotFoundException e) {
@@ -80,14 +85,11 @@ public class AlgoWars {
 			getNodeById(v).visited = true;
 			getNodeById(v).recStack = true;
 			for (int i : getNodeById(v).adjacencies) {
-//				getNodeById(i).parents.add(v);
 				if (!getNodeById(i).visited && modifiedDFS(i)) {
-//					System.out.println("removing edge from " + v + " to " + i);
-//					removeEdge(v, i);
+					possibleRemovals.put(v, i);
 					return true;
 				} else if (getNodeById(i).recStack) {
-//					System.out.println("removing edge from " + v + " to " + i);
-//					removeEdge(v, i);
+					possibleRemovals.put(v, i);
 					return true;
 				}
 			}
@@ -102,5 +104,21 @@ public class AlgoWars {
 				return true;
 		return false;
 	}
-}
 	
+	public void removeCycles() {
+		int[] keyset = new int[possibleRemovals.size()];
+		int i = 0;
+		for (Object k : possibleRemovals.keySet()) {
+			keyset[i] = (int) k;
+			i++;
+		}
+		int j = 0;
+		while (hasCycles()) {
+			System.out.println("removing edge from " + j + " to " + possibleRemovals.get((Object) j));
+			removeEdge(j, possibleRemovals.get((Object) j));
+			possibleRemovals.remove((Object) j);
+			j++;
+		}
+	}		
+}
+

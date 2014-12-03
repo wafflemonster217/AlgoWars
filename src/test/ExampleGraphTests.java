@@ -47,10 +47,10 @@ public class ExampleGraphTests {
 		assertTrue(testSubject.hasCycles());
 	}
 	
-	// incomplete
 	@Test
-	public void testParents() {
+	public void testRemoveCycles() {
 		assertTrue(testSubject.hasCycles());
+		testSubject.removeCycles();
 	}
 	
 	@Test
