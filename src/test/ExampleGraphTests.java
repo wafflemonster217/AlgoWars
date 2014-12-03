@@ -47,6 +47,12 @@ public class ExampleGraphTests {
 		assertTrue(testSubject.hasCycles());
 	}
 	
+	// incomplete
+	@Test
+	public void testParents() {
+		assertTrue(testSubject.hasCycles());
+	}
+	
 	@Test
 	public void figureStuffOut() {
 		for (Node n : testSubject.graph)

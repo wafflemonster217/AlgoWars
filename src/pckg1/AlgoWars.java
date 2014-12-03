@@ -16,6 +16,8 @@ public class AlgoWars {
 
 	// just a helper to determine what has been added to the graph
 	private HashSet<Integer> hasAdded;
+	
+	public int numEdgesRemoved = 0;
 
 	public AlgoWars(String filename) {
 		this.filename = filename;
@@ -66,6 +68,7 @@ public class AlgoWars {
 	public boolean removeEdge(int from, int to) {
 		if (getNodeById(from).adjacencies.contains(to)) {
 			getNodeById(from).adjacencies.remove(to);
+			numEdgesRemoved++;
 			return true;
 		}
 		System.out.println("There is no edge from " + from + " to " + to);
@@ -77,20 +80,15 @@ public class AlgoWars {
 			getNodeById(v).visited = true;
 			getNodeById(v).recStack = true;
 			for (int i : getNodeById(v).adjacencies) {
+//				getNodeById(i).parents.add(v);
 				if (!getNodeById(i).visited && modifiedDFS(i)) {
-					do {
-						System.out.println("removing edge from " + v + " to " + i);
-						removeEdge(v, i);
-						return true;
-					} while (hasCycles());
-					
+//					System.out.println("removing edge from " + v + " to " + i);
+//					removeEdge(v, i);
+					return true;
 				} else if (getNodeById(i).recStack) {
-					do {
-						System.out.println("removing edge from " + v + " to " + i);
-						removeEdge(v, i);
-						return true;
-					} while (hasCycles());
-					
+//					System.out.println("removing edge from " + v + " to " + i);
+//					removeEdge(v, i);
+					return true;
 				}
 			}
 		}
