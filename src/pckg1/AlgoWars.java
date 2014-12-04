@@ -46,12 +46,13 @@ public class AlgoWars {
 			if (!hasAdded.contains(fromNode)) {
 				Node n = new Node(fromNode);
 				n.addAdjacency(toNode);
+				graph.add(n);
+				hasAdded.add(fromNode);
 				if (!hasAdded.contains(toNode)) {
 					graph.add(new Node(toNode));
 					hasAdded.add(toNode);
 				}
-				graph.add(n);
-				hasAdded.add(fromNode);
+				
 			} else {
 				getNodeById(fromNode).addAdjacency(toNode);
 				if (!hasAdded.contains(toNode)) {
@@ -112,7 +113,7 @@ public class AlgoWars {
 			keyset[i] = (int) k;
 			i++;
 		}
-		int j = 0;
+		int j = 1;
 		while (hasCycles()) {
 			System.out.println("removing edge from " + j + " to " + possibleRemovals.get((Object) j));
 			removeEdge(j, possibleRemovals.get((Object) j));
