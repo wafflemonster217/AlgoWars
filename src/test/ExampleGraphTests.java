@@ -53,6 +53,7 @@ public class ExampleGraphTests {
 		testSubject.removeCycles();
 	}
 	
+	
 	@Test
 	public void figureStuffOut() {
 		for (Node n : testSubject.graph)
