@@ -56,7 +56,7 @@ public class ExampleGraphTests {
 	@Test
 	public void figureStuffOut() {
 		for (Node n : testSubject.graph)
-			if (n.recStack)
+			if (n.temp)
 				System.out.println(n.id);
 	}
 
