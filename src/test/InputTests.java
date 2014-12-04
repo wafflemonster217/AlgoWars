@@ -18,7 +18,7 @@ public class InputTests {
 	@Test
 	public void testLoadedFirstTwoLines() {
 		assertEquals(8, testSubject.n_numberOfVertices);
-		assertEquals(15, testSubject.m_numberOfEdges);
+		assertEquals(13, testSubject.m_numberOfEdges);
 	}
 
 	@Test
@@ -28,16 +28,14 @@ public class InputTests {
 	
 	@Test
 	public void testRandomNodeDegrees() {
-		assertEquals(4, testSubject.getNodeById(2).adjacencies.size());
-		assertTrue(testSubject.getNodeById(2).adjacencies.contains(2));
+		assertEquals(3, testSubject.getNodeById(2).adjacencies.size());
 		assertEquals(3, testSubject.getNodeById(3).adjacencies.size());
-		assertEquals(4, testSubject.getNodeById(2).adjacencies.size());
 	}
 	
 	@Test
 	public void testRemovingEdges() {
-		assertTrue(testSubject.removeEdge(2, 2));
-		assertEquals(3, testSubject.getNodeById(2).adjacencies.size());
+		assertTrue(testSubject.removeEdge(2, 1));
+		assertEquals(2, testSubject.getNodeById(2).adjacencies.size());
 	}
 	
 	@Test
