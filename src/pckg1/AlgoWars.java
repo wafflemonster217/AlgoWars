@@ -84,18 +84,18 @@ public class AlgoWars {
 	private boolean modifiedDFS(int v) {
 		if (getNodeById(v).visited == false) {
 			getNodeById(v).visited = true;
-			getNodeById(v).recStack = true;
+			getNodeById(v).temp = true;
 			for (int i : getNodeById(v).adjacencies) {
 				if (!getNodeById(i).visited && modifiedDFS(i)) {
 					possibleRemovals.put(v, i);
 					return true;
-				} else if (getNodeById(i).recStack) {
+				} else if (getNodeById(i).temp) {
 					possibleRemovals.put(v, i);
 					return true;
 				}
 			}
 		}
-		getNodeById(v).recStack = false;
+		getNodeById(v).temp = false;
 		return false;
 	}
 

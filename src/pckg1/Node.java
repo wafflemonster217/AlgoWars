@@ -10,7 +10,7 @@ public class Node {
 	public Set<Integer> adjacencies;
 	
 	public boolean visited = false;
-	public boolean recStack = false;
+	public boolean temp = false;
 
 	public Node(int id) {
 		adjacencies = new HashSet<Integer>();

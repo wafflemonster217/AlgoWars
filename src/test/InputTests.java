@@ -28,6 +28,8 @@ public class InputTests {
 	
 	@Test
 	public void testRandomNodeDegrees() {
+		assertEquals(4, testSubject.getNodeById(2).adjacencies.size());
+		assertTrue(testSubject.getNodeById(2).adjacencies.contains(2));
 		assertEquals(3, testSubject.getNodeById(3).adjacencies.size());
 		assertEquals(4, testSubject.getNodeById(2).adjacencies.size());
 	}
@@ -46,6 +48,7 @@ public class InputTests {
 	@Test
 	public void testRemoveCycles() {
 		assertTrue(testSubject.hasCycles());
+		System.out.println(testSubject.possibleRemovals);
 		testSubject.removeCycles();
 		System.out.println(testSubject.numEdgesRemoved);
 	}
