@@ -6,12 +6,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class AlgoWars {
 	public String filename;
 
 	// the main graph
-	public HashSet<Node> graph;
+	public Set<Node> graph;
 
 	public int n_numberOfVertices;
 	public int m_numberOfEdges;
