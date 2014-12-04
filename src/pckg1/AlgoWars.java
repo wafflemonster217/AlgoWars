@@ -18,7 +18,7 @@ public class AlgoWars {
 	public int m_numberOfEdges;
 
 	// just a helper to determine what has been added to the graph
-	private HashSet<Integer> hasAdded;
+	private Set<Integer> hasAdded;
 	
 	public int numEdgesRemoved = 0;
 	
