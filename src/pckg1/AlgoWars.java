@@ -107,6 +107,13 @@ public class AlgoWars {
 		return false;
 	}
 	
+	public boolean checksAgain(){
+		while (possibleRemovals.size() != 0){
+			return true;
+		}
+		return false;
+	}
+	
 	public void removeCycles() {
 		int[] keyset = new int[possibleRemovals.size()];
 		int i = 0;
@@ -116,11 +123,16 @@ public class AlgoWars {
 		}
 		int j = 1;
 		while (hasCycles()) {
-			System.out.println("removing edge from " + j + " to " + possibleRemovals.get((Object) j));
-			removeEdge(j, possibleRemovals.get((Object) j));
-			possibleRemovals.remove((Object) j);
-			j++;
+			while(checksAgain()){
+				if (possibleRemovals.get((Object) j) != null){
+					System.out.println("removing edge from " + j + " to " + possibleRemovals.get((Object) j));
+					removeEdge(j, possibleRemovals.get((Object) j));
+					possibleRemovals.remove((Object) j);
+				}
+				j++;
+			}
 		}
+		
 	}		
 }
 
